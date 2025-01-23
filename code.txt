@@ -1,0 +1,38 @@
+#import pustaka yang diperlukan
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fungsi untuk menyelesaikan persamaan diferensial secara analitik
+def pertumbuhan_populasi(t, P0, r):
+    """
+    Menghitung populasi pada waktu t berdasarkan persamaan eksponensial:
+    P(t) = P0 * e^(r * t)
+
+    Parameter:
+        t : array-like, titik waktu
+        P0: float, populasi awal
+        r : float, laju pertumbuhan
+
+    Mengembalikan:
+        p : array-like, populasi pada setiap titik waktu
+    """
+    return P0 * np.exp(r * t)
+
+# Parameter contoh
+P0 = 1000
+  # Populasi awal
+r = 0.1   # Laju pertumbuhan (10% per satuan waktu)
+t = np.linspace(0, 50, 200)  # Titik waktu dari 0 hingga 50
+
+# Menyelesaikan persamaan
+P = pertumbuhan_populasi(t, P0, r)
+
+# Plot hasilnya
+plt.figure(figsize=(8, 6))
+plt.plot(t, P, label=f"P(t) = {P0} * exp({r} * t)", color="green")
+plt.title("Pertumbuhan Populasi Seiring Waktu")
+plt.xlabel("waktu(t)")
+plt.ylabel("Populasi(P)")
+plt.legend()
+plt.grid()
+plt.show()
